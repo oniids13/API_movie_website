@@ -1,0 +1,21 @@
+<%- include("partials/header.ejs") %>
+
+
+<% if (movies.length === 0) { %>
+    <p class="mx-5">Not found. Check your spelling and try again.</p>
+    <a href="/"><button class="btn btn-success mx-5">Back</button></a>
+<% } else { %>
+    <ul class="list-group">
+        <% movies.forEach(movie => { %>
+            <a href="/movie/<%= movie.id %>">
+                <li class="list-group-item"><%= movie.title %> - <%= movie.year %></li>
+            </a>
+       <% }) %>
+    </ul>
+<% } %>
+
+
+
+
+
+<%- include("partials/footer.ejs") %>

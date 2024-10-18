@@ -1,0 +1,33 @@
+<%- include("partials/header.ejs") %>
+
+<div class="text-center my-3 border-bottom border-top">
+    <h1>Top Rated TV Shows</h1>
+</div>
+<div class="main-cards">
+    <% tvshows.forEach(tv => { %>
+        <div class="card" style="width: 18rem;">
+          <a href="/tv/<%= tv.id %>"><img src="<%= tv.poster %>" class="card-img-top" alt="<%= tv.title %>"></a>
+            <div class="card-body">
+              <h5 class="card-title"><%= tv.title %></h5>
+              <span><%= tv.year %></span>
+            </div>
+          </div>
+    <%});%> 
+</div>
+
+<div class="text-center my-3 border-bottom border-top">
+  <h1>Trending TV Shows</h1>
+</div>
+<div class="main-cards">
+  <% trend.forEach(tv => { %>
+      <div class="card" style="width: 18rem;">
+        <a href="/tv/<%= tv.id %>"><img src="<%= tv.poster %>" class="card-img-top" alt="<%= tv.title %>"></a>
+          <div class="card-body">
+            <h5 class="card-title"><%= tv.title %></h5>
+            <span><%= tv.year %></span>
+          </div>
+        </div>
+  <%});%> 
+</div>
+
+<%- include("partials/footer.ejs") %>

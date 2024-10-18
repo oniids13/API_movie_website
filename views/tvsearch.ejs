@@ -1,0 +1,18 @@
+<%- include("partials/header.ejs") %>
+
+<% if (tvshow.length === 0) { %>
+    <p class="mx-5">Not found. Check your spelling and try again.</p>
+    <a href="/"><button class="btn btn-success mx-5">Back</button></a>
+<% } else { %>
+    <ul class="list-group">
+        <% tvshow.forEach(tv => { %>
+            <a href="/tv/<%= tv.id %>">
+                <li class="list-group-item"><%= tv.title %> - <%= tv.year %></li>
+            </a>
+       <% }) %>
+    </ul>
+<% } %>
+
+
+
+<%- include("partials/footer.ejs") %>

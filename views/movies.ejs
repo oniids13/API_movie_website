@@ -1,0 +1,37 @@
+<%- include("partials/header.ejs") %>
+
+
+
+<div class="text-center my-3 border-bottom border-top">
+    <h1>Top Rated Movies</h1>
+</div>
+<div class="main-cards">
+    <% movies.forEach(movie => { %>
+        <div class="card" style="width: 18rem;">
+          <a href="/movie/<%= movie.id %>"><img src="<%= movie.poster %>" class="card-img-top" alt="<%= movie.title %>"></a>
+            <div class="card-body">
+              <h5 class="card-title"><%= movie.title %></h5>
+              <span><%= movie.year %></span>
+            </div>
+          </div>
+    <%});%> 
+</div>
+
+<div class="text-center my-3 border-bottom border-top">
+  <h1>Trending Movies</h1>
+</div>
+<div class="main-cards">
+  <% trend.forEach(movie => { %>
+      <div class="card" style="width: 18rem;">
+        <a href="/movie/<%= movie.id %>"><img src="<%= movie.poster %>" class="card-img-top" alt="<%= movie.title %>"></a>
+          <div class="card-body">
+            <h5 class="card-title"><%= movie.title %></h5>
+            <span><%= movie.year %></span>
+          </div>
+        </div>
+  <%});%> 
+</div>
+
+
+
+<%- include("partials/footer.ejs") %>
