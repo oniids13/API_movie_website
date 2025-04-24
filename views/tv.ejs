@@ -1,21 +1,21 @@
 <%- include("partials/header.ejs") %>
 
 <div>
-    <div class="row mx-5">
-        <div class="col-4 mt-5">
-            <h1><%= tv.title %></h1>
-            <p><%= tv.year %></p>
-            <p><%= tv.genre %></p>
-            <p><strong>No. of Episodes:</strong> <%= tv.noOfEpisodes %></p>
-            <p><strong>No. of Seasons:</strong> <%= tv.noOfSeasons %></p>
-            <p>Popularity: <%= tv.popularity %></p>
-            <p><%= tv.description %></p>
-        </div>
-        <div class="col-8 d-flex justify-content-center mt-5">
-            <img class="pic" src="<%= tv.imgUrl %>" alt="<%= tv.title %>">
-        </div>
+  <div class="row mx-5">
+    <div class="col-4 mt-5">
+      <h1><%= tv.title %></h1>
+      <p><%= tv.year %></p>
+      <p><%= tv.genre %></p>
+      <p><strong>No. of Episodes:</strong> <%= tv.noOfEpisodes %></p>
+      <p><strong>No. of Seasons:</strong> <%= tv.noOfSeasons %></p>
+      <p>Popularity: <%= tv.popularity %></p>
+      <p><%= tv.description %></p>
+      <a href="/tvshows"><button class="btn btn-primary">Back</button></a>
     </div>
+    <div class="col-8 d-flex justify-content-center mt-5">
+      <img class="pic" src="<%= tv.imgUrl %>" alt="<%= tv.title %>" />
+    </div>
+  </div>
 </div>
-
 
 <%- include("partials/footer.ejs") %>
