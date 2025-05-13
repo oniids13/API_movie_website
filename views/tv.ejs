@@ -1,19 +1,55 @@
 <%- include("partials/header.ejs") %>
 
-<div>
-  <div class="row mx-5">
-    <div class="col-4 mt-5">
-      <h1><%= tv.title %></h1>
-      <p><%= tv.year %></p>
-      <p><%= tv.genre %></p>
-      <p><strong>No. of Episodes:</strong> <%= tv.noOfEpisodes %></p>
-      <p><strong>No. of Seasons:</strong> <%= tv.noOfSeasons %></p>
-      <p>Popularity: <%= tv.popularity %></p>
-      <p><%= tv.description %></p>
-      <a href="/tvshows"><button class="btn btn-primary">Back</button></a>
+<div class="container py-5">
+  <div class="media-detail">
+    <div class="position-relative">
+      <img
+        class="media-backdrop w-100"
+        src="<%= tv.imgUrl %>"
+        alt="<%= tv.title %>"
+      />
+      <div
+        class="position-absolute w-100 h-100 top-0"
+        style="
+          background: linear-gradient(
+            to bottom,
+            rgba(3, 37, 65, 0.1),
+            rgba(3, 37, 65, 0.8)
+          );
+        "
+      ></div>
     </div>
-    <div class="col-8 d-flex justify-content-center mt-5">
-      <img class="pic" src="<%= tv.imgUrl %>" alt="<%= tv.title %>" />
+
+    <div class="media-info">
+      <h1 class="mb-3">
+        <%= tv.title %> <span class="text-muted fs-4">(<%= tv.year %>)</span>
+      </h1>
+
+      <div class="media-meta">
+        <div class="meta-item">
+          <i class="fa-solid fa-film me-1"></i> <%= tv.genre %>
+        </div>
+        <div class="meta-item">
+          <i class="fa-solid fa-tv me-1"></i> <%= tv.noOfSeasons %> Season<%=
+          tv.noOfSeasons !== 1 ? 's' : '' %>
+        </div>
+        <div class="meta-item">
+          <i class="fa-regular fa-circle-play me-1"></i> <%= tv.noOfEpisodes %>
+          Episode<%= tv.noOfEpisodes !== 1 ? 's' : '' %>
+        </div>
+        <div class="meta-item">
+          <i class="fa-solid fa-chart-line me-1"></i> <%= tv.popularity %>
+        </div>
+      </div>
+
+      <h4 class="mt-4 mb-3">Overview</h4>
+      <p class="media-description"><%= tv.description %></p>
+
+      <div class="mt-4">
+        <a href="/tvshows" class="btn btn-primary">
+          <i class="fa-solid fa-arrow-left me-2"></i>Back to TV Shows
+        </a>
+      </div>
     </div>
   </div>
 </div>

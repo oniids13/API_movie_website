@@ -1,68 +1,102 @@
 <%- include("partials/header.ejs") %>
 
+<section class="hero-section">
+  <div class="container text-center">
+    <h1 class="hero-title">Welcome to CineVerse</h1>
+    <p class="hero-text">
+      Discover thousands of movies and TV shows, get detailed information, and
+      stay updated with what's trending.
+    </p>
+  </div>
+</section>
+
 <div class="container">
+  <section class="search-section">
     <div class="row">
-        <div class="col-xl-6 col-sm-9 my-5">
-            <h2 class="text-center">Looking for a Movie?</h2>
-            <form action="/movie-search" method="post">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput" name="movieSearch">
-                    <label for="floatingInput">Search Movie</label>
-                  </div>
-                  <div class="d-flex justify-content-center">
-                    <button class="btn btn-primary" type="submit">Search</button>
-                </div>
-            </form>
-        </div>
-        <div class="col-xl-6 col-sm-9 my-5">
-            <h2 class="text-center">Looking for a Tv Show?</h2>
-            <form action="/tv-search" method="post">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput" name="tvSearch">
-                    <label for="floatingInput">Search TV show</label>
-                  </div>
-                  <div class="d-flex justify-content-center">
-                    <button class="btn btn-primary" type="submit">Search</button>
-                </div>
-            </form>
-        </div>
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <h3 class="text-center mb-3">Find Movies</h3>
+        <form action="/movie-search" method="post">
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="movieSearch"
+              name="movieSearch"
+              placeholder="Search for a movie"
+            />
+            <label for="movieSearch">Search Movie</label>
+          </div>
+          <div class="d-flex justify-content-center">
+            <button class="btn btn-primary" type="submit">
+              <i class="fa-solid fa-magnifying-glass me-2"></i>Search
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="col-lg-6">
+        <h3 class="text-center mb-3">Find TV Shows</h3>
+        <form action="/tv-search" method="post">
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="tvSearch"
+              name="tvSearch"
+              placeholder="Search for a TV show"
+            />
+            <label for="tvSearch">Search TV Show</label>
+          </div>
+          <div class="d-flex justify-content-center">
+            <button class="btn btn-primary" type="submit">
+              <i class="fa-solid fa-magnifying-glass me-2"></i>Search
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
-</div>
+  </section>
 
+  <section class="popular-movies mt-5">
+    <h2 class="section-title">Popular Movies</h2>
+    <div class="media-grid">
+      <% topMovie.forEach(movie => { %>
+      <div class="media-card">
+        <a href="/movie/<%= movie.id %>">
+          <img
+            src="<%= movie.moviePoster%>"
+            class="media-poster"
+            alt="<%= movie.title %>"
+          />
+          <div class="media-body">
+            <h5 class="media-title"><%= movie.title %></h5>
+            <div class="media-year"><%= movie.year %></div>
+          </div>
+        </a>
+      </div>
+      <% }); %>
+    </div>
+  </section>
 
-<div>
-   
-
-    <div class="text-center my-3 border-bottom border-top">
-        <h1>Popular Movies</h1>
+  <section class="popular-tv mt-5">
+    <h2 class="section-title">Popular TV Shows</h2>
+    <div class="media-grid">
+      <% topTv.forEach(tv => { %>
+      <div class="media-card">
+        <a href="/tv/<%= tv.id %>">
+          <img
+            src="<%= tv.tvPoster%>"
+            class="media-poster"
+            alt="<%= tv.title %>"
+          />
+          <div class="media-body">
+            <h5 class="media-title"><%= tv.title %></h5>
+            <div class="media-year"><%= tv.year %></div>
+          </div>
+        </a>
+      </div>
+      <% }); %>
     </div>
-    <div class="main-cards">
-        <% topMovie.forEach(movie => { %>
-            <div class="card" style="width: 18rem;">
-                <a href="/movie/<%= movie.id %>"><img src="<%= movie.moviePoster%>" class="card-img-top" alt="<%= movie.title %>"></a>
-                <div class="card-body">
-                  <h5 class="card-title"><%= movie.title %></h5>
-                  <span><%= movie.year %></span>
-                </div>
-              </div>
-        <%});%> 
-    </div>
-
-    <div class="text-center my-3 border-bottom border-top">
-        <h1>Popular TV shows</h1>
-    </div>
-    <div class="main-cards">
-        <% topTv.forEach(tv => { %>
-            <div class="card" style="width: 18rem;">
-                <a href="/tv/<%= tv.id %>"><img src="<%= tv.tvPoster%>" class="card-img-top" alt="<%= tv.title %>"></a>
-                <div class="card-body">
-                    <h5 class="card-title"><%= tv.title %></h5>
-                    <span><%= tv.year %></span>
-                </div>
-                </div>
-        <%});%> 
-    </div>
-    
+  </section>
 </div>
 
 <%- include("partials/footer.ejs") %>

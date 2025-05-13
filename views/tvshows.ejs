@@ -1,33 +1,56 @@
 <%- include("partials/header.ejs") %>
 
-<div class="text-center my-3 border-bottom border-top">
-    <h1>Top Rated TV Shows</h1>
-</div>
-<div class="main-cards">
-    <% tvshows.forEach(tv => { %>
-        <div class="card" style="width: 18rem;">
-          <a href="/tv/<%= tv.id %>"><img src="<%= tv.poster %>" class="card-img-top" alt="<%= tv.title %>"></a>
-            <div class="card-body">
-              <h5 class="card-title"><%= tv.title %></h5>
-              <span><%= tv.year %></span>
-            </div>
-          </div>
-    <%});%> 
-</div>
+<section class="hero-section">
+  <div class="container text-center">
+    <h1 class="hero-title">Explore TV Shows</h1>
+    <p class="hero-text">
+      Discover top-rated and trending TV series from around the world.
+    </p>
+  </div>
+</section>
 
-<div class="text-center my-3 border-bottom border-top">
-  <h1>Trending TV Shows</h1>
-</div>
-<div class="main-cards">
-  <% trend.forEach(tv => { %>
-      <div class="card" style="width: 18rem;">
-        <a href="/tv/<%= tv.id %>"><img src="<%= tv.poster %>" class="card-img-top" alt="<%= tv.title %>"></a>
-          <div class="card-body">
-            <h5 class="card-title"><%= tv.title %></h5>
-            <span><%= tv.year %></span>
+<div class="container">
+  <section class="top-rated mt-5">
+    <h2 class="section-title">Top Rated TV Shows</h2>
+    <div class="media-grid">
+      <% tvshows.forEach(tv => { %>
+      <div class="media-card">
+        <a href="/tv/<%= tv.id %>">
+          <img
+            src="<%= tv.poster %>"
+            class="media-poster"
+            alt="<%= tv.title %>"
+          />
+          <div class="media-body">
+            <h5 class="media-title"><%= tv.title %></h5>
+            <div class="media-year"><%= tv.year %></div>
           </div>
-        </div>
-  <%});%> 
+        </a>
+      </div>
+      <% }); %>
+    </div>
+  </section>
+
+  <section class="trending mt-5">
+    <h2 class="section-title">Trending TV Shows</h2>
+    <div class="media-grid">
+      <% trend.forEach(tv => { %>
+      <div class="media-card">
+        <a href="/tv/<%= tv.id %>">
+          <img
+            src="<%= tv.poster %>"
+            class="media-poster"
+            alt="<%= tv.title %>"
+          />
+          <div class="media-body">
+            <h5 class="media-title"><%= tv.title %></h5>
+            <div class="media-year"><%= tv.year %></div>
+          </div>
+        </a>
+      </div>
+      <% }); %>
+    </div>
+  </section>
 </div>
 
 <%- include("partials/footer.ejs") %>

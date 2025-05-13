@@ -1,18 +1,51 @@
 <%- include("partials/header.ejs") %>
 
-<div>
-  <div class="row mx-5">
-    <div class="col-4 mt-5">
-      <h1><%= movie.title %></h1>
-      <p><%= movie.year %></p>
-      <p><%= movie.genre %></p>
-      <p><strong>Run time:</strong> <%= movie.runtime %></p>
-      <p>Popularity: <%= movie.popularity %></p>
-      <p><%= movie.description %></p>
-      <a href="/movies"><button class="btn btn-primary">Back</button></a>
+<div class="container py-5">
+  <div class="media-detail">
+    <div class="position-relative">
+      <img
+        class="media-backdrop w-100"
+        src="<%= movie.imgUrl %>"
+        alt="<%= movie.title %>"
+      />
+      <div
+        class="position-absolute w-100 h-100 top-0"
+        style="
+          background: linear-gradient(
+            to bottom,
+            rgba(3, 37, 65, 0.1),
+            rgba(3, 37, 65, 0.8)
+          );
+        "
+      ></div>
     </div>
-    <div class="col-8 d-flex justify-content-center mt-5">
-      <img class="pic" src="<%= movie.imgUrl %>" alt="<%= movie.title %>" />
+
+    <div class="media-info">
+      <h1 class="mb-3">
+        <%= movie.title %>
+        <span class="text-muted fs-4">(<%= movie.year %>)</span>
+      </h1>
+
+      <div class="media-meta">
+        <div class="meta-item">
+          <i class="fa-solid fa-film me-1"></i> <%= movie.genre %>
+        </div>
+        <div class="meta-item">
+          <i class="fa-regular fa-clock me-1"></i> <%= movie.runtime %>
+        </div>
+        <div class="meta-item">
+          <i class="fa-solid fa-chart-line me-1"></i> <%= movie.popularity %>
+        </div>
+      </div>
+
+      <h4 class="mt-4 mb-3">Overview</h4>
+      <p class="media-description"><%= movie.description %></p>
+
+      <div class="mt-4">
+        <a href="/movies" class="btn btn-primary">
+          <i class="fa-solid fa-arrow-left me-2"></i>Back to Movies
+        </a>
+      </div>
     </div>
   </div>
 </div>
