@@ -2,6 +2,9 @@ import axios from "axios";
 import express from "express";
 import bodyParser from "body-parser";
 
+import dotenv from "dotenv";
+dotenv.config();
+
 const app = express();
 const port = 3000;
 
@@ -9,9 +12,8 @@ app.use(express.static("public"));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const API_Auth =
-  "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlNTFiNzViNTlhOTI4ZmZjNGQwNzJhOTU5Mjc0NDJjOSIsIm5iZiI6MTcyOTE3NDI4My42NjIzMjgsInN1YiI6IjY2NTA0MWNkNDY2NzQ0MGY4OTM1MGM2MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.VUuTbZPtRaYLT8FN-wbCfESkfWdeezIs7cK1m8-DIPA";
-const API_KEY = "e51b75b59a928ffc4d072a95927442c9";
+const API_Auth = process.env.API_AUTH;
+const API_KEY = process.env.API_KEY;
 const MOVIE_URL = "https://api.themoviedb.org/3/search/movie";
 const TV_URL = "https://api.themoviedb.org/3/search/tv";
 const SEARCH_MOVIE_URL = "https://api.themoviedb.org/3/movie";
